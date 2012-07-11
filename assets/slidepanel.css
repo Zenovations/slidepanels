@@ -1,0 +1,56 @@
+
+.SlidePanelInsert .links a {
+   position: relative;
+   display: block;
+   overflow: hidden;
+}
+
+.SlidePanelInsert .links.left {
+   float: left;
+}
+.SlidePanelInsert .links.right {
+   float: right;
+}
+
+.SlidePanelInsert .links.bottom,
+.SlidePanelInsert .links.top {
+   clear: both;
+}
+
+.SlidePanelInsert .links.top a,
+.SlidePanelInsert .links.bottom a {
+   display: inline-block;
+   float: left;
+}
+
+.SlidePanelInsert .innerBorder a {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+.SlidePanelInsert .links a img {
+   position: relative;
+   top: 0;
+   left: 0;
+}
+
+.SlidePanelInsert .panelWrapper, .SlidePanelInsert .panelContainer, .SlidePanelInsert .panelContainer .panel {
+   margin: 0;
+   padding: 0;
+}
+
+.SlidePanelInsert .panelWrapper {
+   position: relative;
+   overflow: hidden;
+}
+
+.SlidePanelInsert .panelContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+.SlidePanelInsert .panelContainer .panel {
+   overflow: hidden;
+}

@@ -1,0 +1,89 @@
+body {
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+
+label {
+   font-weight: bold;
+}
+
+.hideable { overflow: hidden; position: relative; padding: 0; }
+
+#configForm fieldset {
+   float: left;
+   width: 30%;
+   padding: 0 10px;
+   margin-top: 25px;
+}
+
+#configForm fieldset label {
+   display: block;
+   padding: 5px;
+}
+
+#configForm fieldset label span {
+   display: inline-block;
+   width: 75px;
+   margin-right: 5px;
+}
+
+#configForm fieldset.inline-fields label {
+   display: inline;
+   padding: 5px;
+}
+
+#configForm fieldset legend {
+   font-size: 10px;
+   margin: 0 0 5px;
+   padding: 0;
+   line-height: 12px;
+}
+
+#configForm fieldset ul {
+   list-style-type: none;
+   margin: 1px;
+   margin-left: 8px;
+   padding: 0;
+}
+
+#configForm fieldset div {
+   clear: both;
+}
+
+#configForm fieldset ul li {
+   float: left;
+}
+
+#configForm fieldset ul li label span {
+   display: inline;
+   padding-left: 8px;
+}
+
+#configForm fieldset ul li label:hover {
+   cursor: pointer;
+}
+
+.hideable h5, .hideable h6 {
+   padding: 5px;
+}
+
+.hideable h5 {
+   margin-top: 0;
+   margin-bottom: 10px;
+}
+
+.hideable p {
+   padding: 5px 10px;
+}
+
+.hider:hover {
+   cursor: pointer;
+}
+
+a.hider.pull-right {
+  padding: 6px;
+}
+
+.shim-right {
+   margin-right: 20px;
+}

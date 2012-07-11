@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <meta content="text/html" charset="utf-8">
+    <title>SlidePanel Creator</title>
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="assets/slidepanel.css" />
+    <link rel="stylesheet" type="text/css" href="assets/app.css" />
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="well hideable">
+                <a href="#" class="hider pull-right"><i class="icon-fullscreen pull-right"></i></a>
+                <h5 class="hider">Instructions</h5>
+                <p>This tool creates sliding content panels with associated tabs.</p>
+                <p>The panel content can be any HTML code you like. The tabs are images.</p>
+                <h6>Installation</h6>
+                <p>Download <a href="assets/slidepanel.css">slidepanel.css</a> and <a href="assets/slidepanel.js">slidepanel.js</a> files to your server</p>
+                <p>Enter your tabs and panels in the boxes below. Sort, tweak, and size until you are happy.</p>
+                <p>Copy and paste the code at the bottom onto the page where your slidepanel will appear.</p>
+                <h6>Tips</h6>
+                <p class="pull-right"><img src="images/example_tab.jpg" /><br /><em>The tabs are sprites</em></p>
+                <p>Your panel height should generally correspond to the combined tab heights (i.e. 5 tabs x 100px tall = 500px panel)</p>
+                <p>Your tabs need to all be the same height (i.e. 5 tabs x 100px tall = 500px panel)</p>
+                <p>The tab images are sprites, which makes load times considerably faster. Create them by making each image twice as tall as the tab, then placing the mouseover/active image below the main image, like the image to the right</p>
+                <p>You need to have jQuery 1.2.6 or greater installed</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <form class="well form-horizontal hideable" id="configForm">
+                <a href="#" class="hider pull-right"><i class="icon-fullscreen pull-right"></i></a>
+                <h5 class="hider">Config Options</h5>
+                <fieldset><legend>Panel</legend>
+                    <label><span>width:</span><input type="text" class="input-small" data-bind='value: panelWidth' /></label>
+                    <label><span>height:</span><input type="text" class="input-small" data-bind='value: panelHeight' /></label>
+                </fieldset>
+                <fieldset><legend>Tab</legend>
+                    <label><span>width:</span><input type="text" class="input-small" data-bind='value: tabWidth' /></label>
+                    <label><span>height:</span><input type="text" class="input-small" data-bind='value: tabHeight' /></label>
+                    <div><b>position:</b></div>
+                    <ul>
+                        <li><label><input type="radio" name="positionGroup" value="left"   data-bind='checked: position' /><span>left</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="right"  data-bind='checked: position' /><span>right</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="top"    data-bind='checked: position' /><span>top</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="bottom" data-bind='checked: position' /><span>bottom</span></label></li>
+                    </ul>
+                    <div><b>activate:</b></div>
+                    <ul>
+                        <li><label><input type="radio" name="activeGroup" value="hover" data-bind='checked: activateMethod' /><span>hover</span></label></li>
+                        <li><label><input type="radio" name="activeGroup" value="click" data-bind='checked: activateMethod' /><span>click</span></label></li>
+                    </ul>
+                </fieldset>
+                <fieldset><legend>Tab Border</legend>
+                    <label ><span>between:</span> <input type="text" class="input-mini" data-bind='value: tabBorderY' /></label>
+                    <label><span>left:</span><input type="text"  class="input-mini" data-bind='value: tabBorderX' /></label>
+                    <label><span>color:</span><input type="text" class="input-small" data-bind='value: tabBorderColor' /></label>
+                    <!--<label><span>inner:</span><input type="checkbox" data-bind='checked: tabBorderInner' /></label>-->
+                </fieldset>
+                <br style="clear:both" />
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h4>Panels</h4>
+            <br />
+            <form data-bind="submit: addRow" class="form-vertical">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="imageUrl">New Tab Image</label>
+                        <div class="controls">
+                            <input type="text" name="imageUrl" id="imageUrl" class="span6" value="" placeholder="images/kitten1.jpg" />
+                            <p class="help-block">Local images are relative to this html file; you may use remote images too (http://site.com/images/kitten1.jpg)</p>
+                        </div>
+                        <label class="control-label" for="imageUrl">New Panel Content</label>
+                        <div class="controls">
+                            <textarea name="tabContent" id="tabContent" cols=10 rows=5 class="span6"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="container">
+                    <div class="row">
+                        <div class="span2">
+                            <button class="btn btn-primary" id="addPanelButton"><i class="icon-plus icon-white"></i> Add New Panel</button>
+                        </div>
+                        <div class="span4">
+                            <button class="btn btn-danger btn-small pull-right" data-bind="click: removeAll">Start Over</button>
+                            <button class="btn btn-success btn-small pull-right shim-right" href="#" id="exampleTrigger">Load Example</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-condensed table-bordered table-striped" data-bind="visible: tabs().length > 0">
+                <thead>
+                <tr><th>#</th><th>image</th><th>&nbsp;</th></tr>
+                </thead>
+                <tbody data-bind="foreach: tabs">
+                <tr>
+                    <td data-bind="text: $index()+1"></td>
+                    <td data-bind="text: url"></td>
+                    <td>
+                        <a class="btn" href="#" data-bind="click: $parent.deleteRow"><i class="icon-remove"></i></a>
+                        <a class="btn" href="#" data-bind="click: $parent.moveUp"><i class="icon-circle-arrow-up"></i></a>
+                        <a class="btn" href="#" data-bind="click: $parent.moveDown"><i class="icon-circle-arrow-down"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="span6">
+            <h4>Preview</h4>
+           <div id="previewPane" data-bind="slidePanel: panelRedraw()"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h4>Code</h4>
+            <pre class="well" data-bind="text: code"></pre>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="slide-panel-template">
+    <div class="SlidePanelInsert">
+
+        <div class="links" data-bind='foreach: tabs, attr: {style: $root.linksStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+
+        <!-- This style="..." attribute determines the size of the panels -->
+        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle}">
+            <div class="panelContainer" data-bind="foreach: tabs">
+                <div class="panel" data-bind="html: content"></div>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+<script type="text/html" id="slide-panel-template-bottom">
+    <div class="SlidePanelInsert">
+
+        <!-- This style="..." attribute determines the size of the panels -->
+        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle}">
+            <div class="panelContainer" data-bind="foreach: tabs">
+                <div class="panel" data-bind="html: content"></div>
+            </div>
+        </div>
+
+        <div class="links" data-bind='foreach: tabs, attr: {style: $root.linkStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+
+    </div>
+</script>
+
+<script type="text/html" id="modal">
+
+</script>
+
+<script type="text/javascript" src="lib/js/normalizeconsole.js"></script>
+<script type="text/javascript" src="lib/js/json2.js"></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type='text/javascript' src='lib/knockout/knockout.js'></script>
+<!--<script type='text/javascript' src='lib/bootstrap/js/bootstrap.js'></script>-->
+<script type='text/javascript' src='assets/slidepanel.js'></script>
+<script type='text/javascript' src='assets/app.js'></script>
+
+</body>
+</html>
