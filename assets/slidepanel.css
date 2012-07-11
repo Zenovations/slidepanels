@@ -20,7 +20,6 @@
 .SlidePanelInsert .links.top a,
 .SlidePanelInsert .links.bottom a {
    display: inline-block;
-   float: left;
 }
 
 .SlidePanelInsert .innerBorder a {

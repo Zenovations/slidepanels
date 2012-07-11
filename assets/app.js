@@ -2,10 +2,7 @@
 
    ko.bindingHandlers.slidePanel = {
       update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-         console.log('updated');
          var $links = $('#previewPane .SlidePanelInsert .links');
-         if( viewModel.tabBorderInner() ) { $links.addClass('innerBorder'); }
-         else { $links.removeClass('innerBorder'); }
 
          if( viewModel.activateMethod() === 'click' ) {
             $links.addClass('click');
@@ -40,7 +37,6 @@
       self.tabBorderY      = ko.observable(0);
       self.tabBorderX      = ko.observable(0);
       self.tabBorderColor  = ko.observable('#000000');
-      self.tabBorderInner  = ko.observable(true);
       self.panelHeight     = ko.observable(400);
       self.panelWidth      = ko.observable(500);
       self.position        = ko.observable('left');
@@ -51,7 +47,6 @@
       };
 
       self.linksStyle = ko.computed(function() {
-         console.log('linksStyle');
          switch(self.position()) {
             case 'left':
             case 'right':
@@ -65,7 +60,6 @@
       }).extend({ throttle: 500 });
 
       self.tabStyle = function(idx) {
-         console.log('tabStyle');
          return _cssFor(self, idx);
       };
 
@@ -73,18 +67,12 @@
          return self.position() === 'bottom'? 'slide-panel-template-bottom' : 'slide-panel-template';
       };
 
-//      self.thumbText = ko.observable('images/kitten1_thumb.jpg');
-//      self.panelText = ko.observable('<img src="images/kitten1.jpg" />');
-
       self.addRow = function(form) {
-         console.log('addRow');
          var imgUrl = form.elements['imageUrl'].value, content = form.elements['tabContent'].value, c = self.tabs().length+1;
          self.tabs.push({url: imgUrl, content: content});
          var re = new RegExp(c+"((_thumb)?\\.(jpg|gif|png))");
          form.elements['imageUrl'].value = imgUrl.replace(re, (c+1)+"$1");
          form.elements['tabContent'].value = content.replace(re, (c+1)+"$1");
-//         self.thumbText( imgUrl.replace(re, (c+1)+"$1") );
-//         self.panelText( '' );
          return false;
       };
 
@@ -114,15 +102,13 @@
          self.tabBorderY();
          self.tabBorderX();
          self.tabBorderColor();
-         self.tabBorderInner();
          self.panelHeight();
          self.panelWidth();
          self.position();
          self.activateMethod();
-      }).extend({ throttle: 500 });
+      });
 
       self.panelWrapperStyle = ko.computed(function() {
-         console.log('panelWrapperStyle');
          return 'width: '+self.panelWidth()+'px; height: '+self.panelHeight()+'px;';
       });
 
@@ -138,8 +124,6 @@
       var viewModel = new ViewModel();
       ko.applyBindings(viewModel);
 
-      $('#configForm').submit(function() { return false; });
-
       $('.hider').each(function() {
          // scope external to the click function or origHeight will be recalculated on each click event
          var $parent = $(this).closest('.hideable'), origHeight = $parent.height(), smallHeight = $parent.find('h5').outerHeight();
@@ -154,6 +138,10 @@
             }
          });
       });
+
+      $('#instructionsWell').height($('#instructionsWell').find('h5').outerHeight());
+
+      $('#configForm').submit(function() { return false; });
 
       $('#exampleTrigger').click(function() {
          viewModel.removeAll();
@@ -171,14 +159,13 @@
          viewModel.panelWidth(400);
          viewModel.position('top'); //debug
          viewModel.activateMethod('hover');
-         $('#imageUrl').val('images/kitten1_thumb.jpg');
-         $('#tabContent').val('<img src="images/kitten1.jpg" />');
-         var i = 5;
-         while(i--) {
-            $('#addPanelButton').click();
+
+         var baseUrl = 'images/kitten{num}_thumb.jpg';
+         var baseContent = '<img src="images/kitten{num}.jpg" />';
+         var i = 0;
+         while(++i < 6) {
+            viewModel.tabs.push({url: baseUrl.replace('{num}', i), content: baseContent.replace('{num}', i)});
          }
-         $('#imageUrl').val('images/kitten1_thumb.jpg');
-         $('#tabContent').val('<img src="images/kitten1.jpg" />');
          return false;
       });
 

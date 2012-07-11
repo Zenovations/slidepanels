@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div class="well hideable">
+            <div class="well hideable" id="instructionsWell">
                 <a href="#" class="hider pull-right"><i class="icon-fullscreen pull-right"></i></a>
                 <h5 class="hider">Instructions</h5>
                 <p>This tool creates sliding content panels with associated tabs.</p>
@@ -135,7 +135,7 @@
 <script type="text/html" id="slide-panel-template">
     <div class="SlidePanelInsert">
 
-        <div class="links" data-bind='foreach: tabs, attr: {style: $root.linksStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.linksStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
         <!-- This style="..." attribute determines the size of the panels -->
         <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle}">
@@ -157,7 +157,7 @@
             </div>
         </div>
 
-        <div class="links" data-bind='foreach: tabs, attr: {style: $root.linkStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.linkStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
     </div>
 </script>
