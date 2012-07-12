@@ -1,0 +1,70 @@
+
+.SlidePanelInsert .links a {
+   position: relative;
+   display: block;
+   overflow: hidden;
+}
+
+.SlidePanelInsert.left .links {
+   float: left;
+}
+.SlidePanelInsert.right .links {
+   float: right;
+}
+
+.SlidePanelInsert.bottom .links,
+.SlidePanelInsert.top .links {
+   clear: both;
+}
+
+.SlidePanelInsert.top .links a,
+.SlidePanelInsert.bottom .links a {
+   display: inline-block;
+}
+
+.SlidePanelInsert .innerBorder a {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+.SlidePanelInsert .links a img {
+   position: relative;
+   top: 0;
+   left: 0;
+}
+
+.SlidePanelInsert .panelWrapper, .SlidePanelInsert .panelContainer, .SlidePanelInsert .panelContainer .panel {
+   margin: 0;
+   padding: 0;
+}
+
+.SlidePanelInsert .panelWrapper {
+   position: relative;
+   overflow: hidden;
+}
+
+.SlidePanelInsert .panelContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+.SlidePanelInsert .panelContainer .panel {
+   overflow: hidden;
+}
+
+.SlidePanelInsert.top .panelContainer:after,
+.SlidePanelInsert.bottom .panelContainer:after {
+   visibility: hidden;
+   display: block;
+   font-size: 0;
+   content: " ";
+   clear: both;
+   height: 0;
+}
+
+.SlidePanelInsert.top .panelContainer .panel,
+.SlidePanelInsert.bottom .panelContainer .panel {
+   float: left;
+}
