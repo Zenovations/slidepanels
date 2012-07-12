@@ -33,6 +33,18 @@ Then you [use the tool to generate your slideshow panels][4], and copy/paste the
 
 [4]: http://katowulf.github.com/slidepanels/
 
+# Building Tab Images
+
+The tab images are sprites, which makes load times considerably faster. Create them by making each image twice as tall as the tab, then placing the mouseover/active image below the main image, like the image below.
+
+# More Tips
+
+Your panel height should generally correspond to the combined tab heights (i.e. 5 tabs x 100px tall = 500px panel)
+
+Your tabs need to all be the same height.
+
+You need to have jQuery 1.2.6 (yes, it's used in production on this old, old version) or greater installed
+
 # Getting Help
 
 Get answers to questions, problems, or bugs at [the GitHub repository][3].
