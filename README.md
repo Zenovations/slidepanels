@@ -14,12 +14,19 @@ To use the SlidePanels tool, you need to download a tiny amount of [javascript][
 [1]: https://raw.github.com/katowulf/slidepanels/master/assets/slidepanel.js
 [2]: https://raw.github.com/katowulf/slidepanels/master/assets/slidepanel.css
 
-And add them to your page:
+And add them to your page, with a little code to invoke them:
 
 ```html
    <link rel="stylesheet" type="text/javascript" src="slidepanel.css" />
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
    <script type="text/javascript" src="slidepanel.js"></script>
+   <script type="text/javascript">
+      jQuery(function($) {
+         // runs when the document is done rendering
+         // activates the SlidePanel plugin for all elements with class 'SlidePanelInsert'
+         $('.SlidePanelInsert').slidePanel();
+      });
+   </script>
 ```
 
 Then you [use the tool to generate your slideshow panels][4], and copy/paste them into your HTML document.
