@@ -1,5 +1,5 @@
 body {
-   padding-top: 20px;
+   padding-top: 60px;
    padding-bottom: 20px;
 }
 
@@ -82,7 +82,7 @@ label {
 }
 
 a.hider.pull-right {
-  padding: 6px;
+   padding: 6px;
 }
 
 .shim-right {

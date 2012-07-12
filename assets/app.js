@@ -6,23 +6,29 @@
    /** CUSTOM BINDING TO RENDER SlidePanel
     ***********************************************************************/
 
-   // create a custom binding to re-render our slidepanel template every time data changes
-   // this also updates the code block shown at the bottom and notifies ZeroClipboard of the new data
+      // create a custom binding to re-render our slidepanel template every time data changes
+      // this also updates the code block shown at the bottom and notifies ZeroClipboard of the new data
    ko.bindingHandlers.slidePanel = {
       update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
          var templateName = viewModel.chooseTemplate(),
-             // the template will replace the node, so create an inner element to get replaced
-             $e = $('<div />').appendTo($(element).html(''));
+         // the template will replace the node, so create an inner element to get replaced
+            $e = $('<div />').appendTo($(element).html(''));
          // render the template
          ko.renderTemplate(templateName, viewModel, {}, $e.get(0), 'replaceNode');
-         // apply the SlidePanel plugin
-         $(element).find('.SlidePanelInsert:first-child').slidePanel();
+
          // render the code to copy/paste
          var code = '<!-- These two assets do all the work! Make sure to include them -->\n' +
             '<link rel="stylesheet" type="text/css" href="assets/slidepanel.css">\n' +
-            '<script type="text/javascript" src="assets/slidepanel.js">\n\n' +
+            '<script type="text/javascript" src="assets/slidepanel.js"></script>\n\n' +
             _getCode($(element));
+
+         // apply the SlidePanel plugin
+         $(element).find('.SlidePanelInsert:first-child').slidePanel();
+
+         // store the code results
          viewModel.code( code );
+
+         // apply updated code to the copy/paste widget if it is enabled
          if( zeroClipWidget ) {
             zeroClipWidget.setText(code);
             zeroClipWidget.reposition();
@@ -206,12 +212,12 @@
 
    function _cssFor(self, idx) {
       var vertical  = _isVert(self.position()),
-          lastTab   = (idx === self.tabs().length-1),
-          borderY   = self.tabBorderY(),
-          borderX   = self.tabBorderX(),
-          color     = self.tabBorderColor(),
-          css       = 'width:'+self.tabWidth()+'px;height:'+self.tabHeight()+'px;',
-          borderTag = 'px solid '+color+';';
+         lastTab   = (idx === self.tabs().length-1),
+         borderY   = self.tabBorderY(),
+         borderX   = self.tabBorderX(),
+         color     = self.tabBorderColor(),
+         css       = 'width:'+self.tabWidth()+'px;height:'+self.tabHeight()+'px;',
+         borderTag = 'px solid '+color+';';
       if( ~~borderY ) {
          css += 'border-top: '+borderY+borderTag;
          if( !vertical || lastTab ) { css += 'border-bottom: '+borderY+borderTag; }
@@ -233,7 +239,7 @@
    }
 
    function _activateClipboardWidget(viewModel) {
-       // set up our clipboard
+      // set up our clipboard
       ZeroClipboard.setMoviePath( 'assets/zeroclip/ZeroClipboard.swf' );
       zeroClipWidget = new ZeroClipboard.Client();
       zeroClipWidget.setHandCursor( true );
