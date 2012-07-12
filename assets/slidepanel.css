@@ -5,20 +5,20 @@
    overflow: hidden;
 }
 
-.SlidePanelInsert .links.left {
+.SlidePanelInsert.left .links {
    float: left;
 }
-.SlidePanelInsert .links.right {
+.SlidePanelInsert.right .links {
    float: right;
 }
 
-.SlidePanelInsert .links.bottom,
-.SlidePanelInsert .links.top {
+.SlidePanelInsert.bottom .links,
+.SlidePanelInsert.top .links {
    clear: both;
 }
 
-.SlidePanelInsert .links.top a,
-.SlidePanelInsert .links.bottom a {
+.SlidePanelInsert.top .links a,
+.SlidePanelInsert.bottom .links a {
    display: inline-block;
 }
 
@@ -52,4 +52,19 @@
 
 .SlidePanelInsert .panelContainer .panel {
    overflow: hidden;
+}
+
+.SlidePanelInsert.top .panelContainer:after,
+.SlidePanelInsert.bottom .panelContainer:after {
+   visibility: hidden;
+   display: block;
+   font-size: 0;
+   content: " ";
+   clear: both;
+   height: 0;
+}
+
+.SlidePanelInsert.top .panelContainer .panel,
+.SlidePanelInsert.bottom .panelContainer .panel {
+   float: left;
 }

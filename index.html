@@ -49,24 +49,26 @@
                 <fieldset><legend>Tab</legend>
                     <label><span>width:</span><input type="text" class="input-small" data-bind='value: tabWidth' /></label>
                     <label><span>height:</span><input type="text" class="input-small" data-bind='value: tabHeight' /></label>
-                    <div><b>position:</b></div>
-                    <ul>
-                        <li><label><input type="radio" name="positionGroup" value="left"   data-bind='checked: position' /><span>left</span></label></li>
-                        <li><label><input type="radio" name="positionGroup" value="right"  data-bind='checked: position' /><span>right</span></label></li>
-                        <li><label><input type="radio" name="positionGroup" value="top"    data-bind='checked: position' /><span>top</span></label></li>
-                        <li><label><input type="radio" name="positionGroup" value="bottom" data-bind='checked: position' /><span>bottom</span></label></li>
-                    </ul>
-                    <div><b>activate:</b></div>
-                    <ul>
-                        <li><label><input type="radio" name="activeGroup" value="hover" data-bind='checked: activateMethod' /><span>hover</span></label></li>
-                        <li><label><input type="radio" name="activeGroup" value="click" data-bind='checked: activateMethod' /><span>click</span></label></li>
-                    </ul>
                 </fieldset>
                 <fieldset><legend>Tab Border</legend>
                     <label ><span>between:</span> <input type="text" class="input-mini" data-bind='value: tabBorderY' /></label>
                     <label><span>left:</span><input type="text"  class="input-mini" data-bind='value: tabBorderX' /></label>
                     <label><span>color:</span><input type="text" class="input-small" data-bind='value: tabBorderColor' /></label>
                     <!--<label><span>inner:</span><input type="checkbox" data-bind='checked: tabBorderInner' /></label>-->
+                </fieldset>
+                <fieldset><legend>Layout</legend>
+                    <div><b>tabs on:</b></div>
+                    <ul>
+                        <li><label><input type="radio" name="positionGroup" value="left"   data-bind='checked: position' /><span>left</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="right"  data-bind='checked: position' /><span>right</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="top"    data-bind='checked: position' /><span>top</span></label></li>
+                        <li><label><input type="radio" name="positionGroup" value="bottom" data-bind='checked: position' /><span>bottom</span></label></li>
+                    </ul>
+                    <div><b>activate on:</b></div>
+                    <ul>
+                        <li><label><input type="radio" name="activeGroup" value="hover" data-bind='checked: activateMethod' /><span>hover</span></label></li>
+                        <li><label><input type="radio" name="activeGroup" value="click" data-bind='checked: activateMethod' /><span>click</span></label></li>
+                    </ul>
                 </fieldset>
                 <br style="clear:both" />
             </form>
@@ -75,7 +77,6 @@
     <div class="row">
         <div class="span6">
             <h4>Panels</h4>
-            <br />
             <form data-bind="submit: addRow" class="form-vertical">
                 <fieldset>
                     <div class="control-group">
@@ -126,19 +127,19 @@
     </div>
     <div class="row">
         <div class="span12">
-            <h4>Code</h4>
-            <pre class="well" data-bind="text: code"></pre>
+            <h4 id="codeTitleThing">Code <a id="clippy" class="btn btn-mini"></a></h4>
+            <pre data-bind="text: code"></pre>
         </div>
     </div>
 </div>
 
 <script type="text/html" id="slide-panel-template">
-    <div class="SlidePanelInsert">
+    <div data-bind='attr: {class: panelClass()}'>
 
-        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.linksStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
         <!-- This style="..." attribute determines the size of the panels -->
-        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle}">
+        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle()}">
             <div class="panelContainer" data-bind="foreach: tabs">
                 <div class="panel" data-bind="html: content"></div>
             </div>
@@ -148,16 +149,16 @@
 </script>
 
 <script type="text/html" id="slide-panel-template-bottom">
-    <div class="SlidePanelInsert">
+    <div data-bind='attr: {class: panelClass()}'>
 
         <!-- This style="..." attribute determines the size of the panels -->
-        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle}">
+        <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle()}">
             <div class="panelContainer" data-bind="foreach: tabs">
                 <div class="panel" data-bind="html: content"></div>
             </div>
         </div>
 
-        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.linkStyle}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
     </div>
 </script>
@@ -168,6 +169,7 @@
 
 <script type="text/javascript" src="lib/js/normalizeconsole.js"></script>
 <script type="text/javascript" src="lib/js/json2.js"></script>
+<script type="text/javascript" src="assets/zeroclip/ZeroClipboard.js"></script>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
 <script type='text/javascript' src='lib/knockout/knockout.js'></script>
 <!--<script type='text/javascript' src='lib/bootstrap/js/bootstrap.js'></script>-->
