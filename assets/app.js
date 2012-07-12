@@ -15,14 +15,20 @@
              $e = $('<div />').appendTo($(element).html(''));
          // render the template
          ko.renderTemplate(templateName, viewModel, {}, $e.get(0), 'replaceNode');
-         // apply the SlidePanel plugin
-         $(element).find('.SlidePanelInsert:first-child').slidePanel();
+
          // render the code to copy/paste
          var code = '<!-- These two assets do all the work! Make sure to include them -->\n' +
             '<link rel="stylesheet" type="text/css" href="assets/slidepanel.css">\n' +
-            '<script type="text/javascript" src="assets/slidepanel.js">\n\n' +
+            '<script type="text/javascript" src="assets/slidepanel.js"></script>\n\n' +
             _getCode($(element));
+
+         // apply the SlidePanel plugin
+         $(element).find('.SlidePanelInsert:first-child').slidePanel();
+
+         // store the code results
          viewModel.code( code );
+
+         // apply updated code to the copy/paste widget if it is enabled
          if( zeroClipWidget ) {
             zeroClipWidget.setText(code);
             zeroClipWidget.reposition();

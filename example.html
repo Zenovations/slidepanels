@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Example SlidePanel</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/javascript" href="assets/slidepanel.css" />
+    <script type="text/javascript" src="assets/slidepanel.js"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            // runs when the document is done rendering
+            // activates the SlidePanel plugin for all elements with class 'SlidePanelInsert'
+            $('.SlidePanelInsert').slidePanel();
+        });
+    </script>
+</head>
+<body>
+
+
+<!-- These two assets do all the work! Make sure to include them -->
+<link rel="stylesheet" type="text/css" href="assets/slidepanel.css">
+<script type="text/javascript" src="assets/slidepanel.js"></script>
+
+
+<div class="SlidePanelInsert left hover" >
+    <div style="width:80px;" class="links innerBorder" ><!--
+            --><a style="width:80px;height:60px;border-top: 1px solid #000000;border-left: 1px solid #000000;border-right: 1px solid #000000;" href="#" ><img src="images/kitten1_thumb.jpg"  height="120" width="80"></a><!--
+            --><a style="width:80px;height:60px;border-top: 1px solid #000000;border-left: 1px solid #000000;border-right: 1px solid #000000;" href="#" ><img src="images/kitten2_thumb.jpg"  height="120" width="80"></a><!--
+            --><a style="width:80px;height:60px;border-top: 1px solid #000000;border-left: 1px solid #000000;border-right: 1px solid #000000;" href="#" ><img src="images/kitten3_thumb.jpg"  height="120" width="80"></a><!--
+            --><a style="width:80px;height:60px;border-top: 1px solid #000000;border-left: 1px solid #000000;border-right: 1px solid #000000;" href="#" ><img src="images/kitten4_thumb.jpg"  height="120" width="80"></a><!--
+            --><a style="width:80px;height:60px;border-top: 1px solid #000000;border-bottom: 1px solid #000000;border-left: 1px solid #000000;border-right: 1px solid #000000;" href="#" ><img src="images/kitten5_thumb.jpg"  height="120" width="80"></a></div>
+
+    <!-- This style="..." attribute determines the size of the panels -->
+    <div style="width: 400px; height: 300px;" class="panelWrapper" >
+        <div class="panelContainer" >
+            <div class="panel" ><img src="images/kitten1.jpg"></div>
+
+            <div class="panel" ><img src="images/kitten2.jpg"></div>
+
+            <div class="panel" ><img src="images/kitten3.jpg"></div>
+
+            <div class="panel" ><img src="images/kitten4.jpg"></div>
+
+            <div class="panel" ><img src="images/kitten5.jpg"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

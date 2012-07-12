@@ -1,11 +1,11 @@
 
 # SlidePanels Tool
 
-This tool generates a tabbed slideshow, which you can download as HTML and add to your site.
+This tool generates a tabbed slideshow, with some very sophisticated layout options, which you can download as HTML and add to your site.
 
 You may [view a demo][demo] or get to work on [your own slideshow][tool].
 
-[demo]: http://katowulf.github.com/slidepanels/#example
+[demo]: http://katowulf.github.com/slidepanels/example.html
 [tool]: http://katowulf.github.com/slidepanels/
 
 # Installation
@@ -18,8 +18,7 @@ And add them to your page, with a little code to invoke them:
 
 ```html
    <link rel="stylesheet" type="text/javascript" src="slidepanel.css" />
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-   <script type="text/javascript" src="slidepanel.js"></script>
+   <script type="text/javascript" href="slidepanel.js"></script>
    <script type="text/javascript">
       jQuery(function($) {
          // runs when the document is done rendering

@@ -15,8 +15,34 @@
 </head>
 
 <body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">SlidePanels</a>
+            <ul class="nav">
+                <li class="active">
+                    <a href="#">Build a Slideshow</a>
+                </li>
+                <li><a href="example.html">Example</a></li>
+                <li><a href="https://github.com/katowulf/slidepanels#readme">Install</a></li>
+                <li><a href="https://github.com/katowulf/slidepanels">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="well hideable" id="instructionsWell">
+                <a href="#" class="hider pull-right"><i class="icon-fullscreen pull-right"></i></a>
+                <h5 class="hider">Instructions</h5>
+                <p>For detailed instructions on installation and usage, <a href="https://github.com/katowulf/slidepanels">view the README on GitHub</a>.</p>
+                <p>This tool creates sliding content panels with associated tabs.</p>
+                <p>The panel content can be any HTML code you like. The tabs are sprite images (see README for more).</p>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="span12">
             <form class="well form-horizontal hideable" id="configForm">
@@ -116,7 +142,8 @@
 <script type="text/html" id="slide-panel-template">
     <div data-bind='attr: {class: panelClass()}'>
 
-        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><!--
+            --><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
         <!-- This style="..." attribute determines the size of the panels -->
         <div class="panelWrapper" data-bind="attr: {style: panelWrapperStyle()}">
@@ -138,7 +165,8 @@
             </div>
         </div>
 
-        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
+        <div class="links innerBorder" data-bind='foreach: tabs, attr: {style: $root.tabGroupStyle()}'><!--
+            --><a href="#" data-bind='attr: {style: $root.tabStyle($index())}'><img data-bind="attr: {src: url, width: $root.tabWidth(), height: $root.tabHeight()*2}" /></a></div>
 
     </div>
 </script>
@@ -151,6 +179,7 @@
 <script type="text/javascript" src="lib/js/json2.js"></script>
 <script type="text/javascript" src="assets/zeroclip/ZeroClipboard.js"></script>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type='text/javascript' src='lib/bootstrap/js/bootstrap.js'></script>
 <script type='text/javascript' src='lib/knockout/knockout.js'></script>
 <!--<script type='text/javascript' src='lib/bootstrap/js/bootstrap.js'></script>-->
 <script type='text/javascript' src='assets/slidepanel.js'></script>
