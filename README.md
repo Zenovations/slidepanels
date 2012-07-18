@@ -5,14 +5,14 @@ This tool generates a tabbed slideshow, with some very sophisticated layout opti
 
 You may [view a demo][demo] or get to work on [your own slideshow][tool].
 
-[demo]: http://katowulf.github.com/slidepanels/example.html
-[tool]: http://katowulf.github.com/slidepanels/
+[demo]: http://zenovations.github.com/slidepanels/example.html
+[tool]: http://zenovations.github.com/slidepanels/
 
 # Installation
 To use the SlidePanels tool, you need to download a tiny amount of [javascript][1] and [css][2].
 
-[1]: https://raw.github.com/katowulf/slidepanels/master/assets/slidepanel.js
-[2]: https://raw.github.com/katowulf/slidepanels/master/assets/slidepanel.css
+[1]: https://raw.github.com/zenovations/slidepanels/master/assets/slidepanel.js
+[2]: https://raw.github.com/zenovations/slidepanels/master/assets/slidepanel.css
 
 And add them to your page, with a little code to invoke them:
 
@@ -30,7 +30,7 @@ And add them to your page, with a little code to invoke them:
 
 Then you [use the tool to generate your slideshow panels][4], and copy/paste them into your HTML document.
 
-[4]: http://katowulf.github.com/slidepanels/
+[4]: http://zenovations.github.com/slidepanels/
 
 # Building Tab Images
 
@@ -48,4 +48,4 @@ You need to have jQuery 1.2.6 (yes, it's used in production on this old, old ver
 
 Get answers to questions, problems, or bugs at [the GitHub repository][3].
 
-[3]: https://github.com/katowulf/slidepanels/issues
+[3]: https://github.com/zenovations/slidepanels/issues
